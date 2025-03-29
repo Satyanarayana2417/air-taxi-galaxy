@@ -9,8 +9,8 @@ import FleetSection from "@/components/FleetSection";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
-  // Normally we would import actual video assets
-  const heroVideoSrc = "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-at-dusk-9708-large.mp4";
+  // Using a video of air taxis/flying vehicles over a city at night
+  const heroVideoSrc = "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-city-at-night-13426-large.mp4";
   
   return (
     <div className="min-h-screen flex flex-col">

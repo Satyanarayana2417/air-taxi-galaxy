@@ -27,7 +27,7 @@ const HeroSection = ({
         muted
         playsInline
       >
-        <source src={videoSrc} type="video/mp4" />
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-city-at-night-13426-large.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
