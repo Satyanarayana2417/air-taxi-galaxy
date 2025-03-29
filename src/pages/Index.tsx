@@ -8,7 +8,7 @@ import FleetSection from "@/components/FleetSection";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
-  const heroVideoSrc = "/public/videos/flying-taxi.mp4";  // Make sure this file exists in the public folder
+  const heroVideoSrc = "/videos/flying-taxi.mp4";  // Make sure this file exists in the public folder
   
   return (
     <div className="min-h-screen flex flex-col">
