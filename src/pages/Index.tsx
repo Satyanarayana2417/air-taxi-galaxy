@@ -3,6 +3,9 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
+import ReviewSection from "@/components/ReviewSection";
+import StatsSection from "@/components/StatsSection";
+import FleetSection from "@/components/FleetSection";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
@@ -27,6 +30,12 @@ const Index = () => {
             <BookingForm />
           </div>
         </section>
+        
+        {/* Stats Section */}
+        <StatsSection />
+        
+        {/* Fleet Section */}
+        <FleetSection />
         
         {/* Benefits Section */}
         <section className="py-16">
@@ -73,6 +82,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+        
+        {/* Reviews Section */}
+        <ReviewSection />
         
         {/* Vision Section */}
         <section className="py-16 bg-airavata-blue text-white">

@@ -103,9 +103,34 @@
 
 .video-background {
   @apply absolute top-0 left-0 h-full w-full object-cover z-[-1];
-  filter: brightness(0.6);
+  filter: brightness(0.7);
 }
 
 .booking-form {
   @apply bg-white/90 dark:bg-airavata-blue/90 backdrop-blur-md p-8 rounded-xl shadow-lg;
 }
+
+/* Animation Classes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/* Hover Effects */
+.hover-scale {
+  @apply transition-transform duration-300;
+}
+.hover-scale:hover {
+  @apply transform scale-105;
+}
+

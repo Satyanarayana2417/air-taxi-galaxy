@@ -19,6 +19,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-airavata-blue/40 to-airavata-blue/70 z-[1]"></div>
       <video
         className="video-background"
         autoPlay
