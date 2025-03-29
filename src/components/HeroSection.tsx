@@ -21,13 +21,13 @@ const HeroSection = ({
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-airavata-blue/40 to-airavata-blue/70 z-[1]"></div>
       <video
-        className="video-background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         loop
         muted
         playsInline
       >
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-city-at-night-13426-large.mp4" type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       

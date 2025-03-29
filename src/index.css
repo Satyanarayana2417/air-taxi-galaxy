@@ -102,7 +102,7 @@
 }
 
 .video-background {
-  @apply absolute top-0 left-0 h-full w-full object-cover z-[-1];
+  @apply absolute top-0 left-0 h-full w-full object-cover z-0;
   filter: brightness(0.7);
 }
 
@@ -133,4 +133,3 @@
 .hover-scale:hover {
   @apply transform scale-105;
 }
-
