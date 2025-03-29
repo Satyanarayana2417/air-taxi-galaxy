@@ -30,11 +30,7 @@ const PaymentForm = ({
     const adultPrice = adultCount * 2500;
     const childPrice = childCount * 1300;
     const subtotal = adultPrice + childPrice;
-    
-    // Use the tax rate from the flight details, default to 18% (India)
-    const taxRate = flightDetails.taxRate || 18;
-    const tax = subtotal * (taxRate / 100);
-    
+    const tax = subtotal * 0.18; // 18% IGST
     return subtotal + tax;
   };
   
@@ -71,16 +67,16 @@ const PaymentForm = ({
             <TabsContent value="upi" className="space-y-4 pt-4">
               <div className="flex justify-center space-x-4">
                 <button className="w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" className="w-12 h-12 object-contain" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/1200px-UPI-Logo-vector.svg.png" alt="UPI" className="w-12 h-12 object-contain" />
                 </button>
                 <button className="w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" className="w-12 h-12 object-contain" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/512px-Google_Pay_Logo.svg.png" alt="Google Pay" className="w-12 h-12 object-contain" />
                 </button>
                 <button className="w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm" className="w-12 h-12 object-contain" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/2560px-Paytm_Logo_%28standalone%29.svg.png" alt="Paytm" className="w-12 h-12 object-contain" />
                 </button>
                 <button className="w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/PhonePe_Logo.svg" alt="PhonePe" className="w-12 h-12 object-contain" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png" alt="PhonePe" className="w-12 h-12 object-contain" />
                 </button>
               </div>
               
@@ -145,19 +141,19 @@ const PaymentForm = ({
             <TabsContent value="wallet" className="space-y-4 pt-4">
               <div className="grid grid-cols-2 gap-4">
                 <button className="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm" className="h-8 mb-2" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/2560px-Paytm_Logo_%28standalone%29.svg.png" alt="Paytm" className="h-8 mb-2" />
                   <span className="text-sm">Paytm</span>
                 </button>
                 <button className="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/PhonePe_Logo.svg" alt="PhonePe" className="h-8 mb-2" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png" alt="PhonePe" className="h-8 mb-2" />
                   <span className="text-sm">PhonePe</span>
                 </button>
                 <button className="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" className="h-8 mb-2" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/512px-Google_Pay_Logo.svg.png" alt="Google Pay" className="h-8 mb-2" />
                   <span className="text-sm">Google Pay</span>
                 </button>
                 <button className="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Amazon_Pay_logo.svg" alt="Amazon Pay" className="h-8 mb-2" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Amazon_Pay_logo.svg/1200px-Amazon_Pay_logo.svg.png" alt="Amazon Pay" className="h-8 mb-2" />
                   <span className="text-sm">Amazon Pay</span>
                 </button>
               </div>
@@ -170,11 +166,6 @@ const PaymentForm = ({
             <span>Total Amount</span>
             <span>₹{calculateTotal().toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
           </div>
-          {flightDetails.isInternational && (
-            <div className="text-xs text-gray-500 mt-1">
-              Includes {flightDetails.taxRate || 18}% tax ({flightDetails.toCity} local tax rate)
-            </div>
-          )}
         </div>
         
         <DialogFooter className="mt-4">

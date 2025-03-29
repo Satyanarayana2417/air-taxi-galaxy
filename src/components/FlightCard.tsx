@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ArrowRight, Clock, Calendar, Users, Plane } from "lucide-react";
+import { ArrowRight, Clock, Calendar, Users } from "lucide-react";
 
 export interface FlightDetails {
   id: string;
@@ -14,8 +14,6 @@ export interface FlightDetails {
   availableSeats: number;
   taxiNumber: string;
   price: number;
-  taxRate?: number;
-  isInternational?: boolean;
 }
 
 interface FlightCardProps {
@@ -48,75 +46,61 @@ const FlightCard = ({ flight, onBook }: FlightCardProps) => {
     const adultPrice = adultCount * 2500;
     const childPrice = childCount * 1300;
     const subtotal = adultPrice + childPrice;
-    
-    // Use the tax rate from the flight details, default to 18% (India)
-    const taxRate = flight.taxRate || 18;
-    const tax = subtotal * (taxRate / 100);
-    
+    const tax = subtotal * 0.18; // 18% IGST
     return {
       adultPrice,
       childPrice,
       subtotal,
       tax,
-      total: subtotal + tax,
-      taxRate
+      total: subtotal + tax
     };
   };
 
-  const { adultPrice, childPrice, subtotal, tax, total, taxRate } = calculateTotal();
+  const { adultPrice, childPrice, subtotal, tax, total } = calculateTotal();
 
   return (
-    <div className="bg-white dark:bg-airavata-blue/70 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-800 futuristic-border glow-effect">
+    <div className="bg-white dark:bg-airavata-blue/70 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-800">
       <div className="p-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
           <div className="flex items-center mb-2 sm:mb-0">
-            <div className="text-xl font-semibold font-orbitron">{flight.fromCity}</div>
+            <div className="text-xl font-semibold">{flight.fromCity}</div>
             <ArrowRight className="mx-2 text-airavata-cyan" />
-            <div className="text-xl font-semibold font-orbitron">{flight.toCity}</div>
-            
-            {flight.isInternational && (
-              <span className="ml-2 px-1.5 py-0.5 text-xs rounded-full bg-airavata-purple/20 text-airavata-purple border border-airavata-purple/40">
-                International
-              </span>
-            )}
+            <div className="text-xl font-semibold">{flight.toCity}</div>
           </div>
           
-          <div className="text-2xl font-bold text-airavata-purple font-orbitron">
+          <div className="text-2xl font-bold text-airavata-purple">
             ₹{flight.price.toLocaleString()}
           </div>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div className="flex items-center">
-            <Clock className="h-4 w-4 text-airavata-cyan mr-2" />
+            <Clock className="h-4 w-4 text-gray-500 mr-2" />
             <span className="text-sm">
               {flight.startTime} - {flight.arrivalTime}
             </span>
           </div>
           
           <div className="flex items-center">
-            <Calendar className="h-4 w-4 text-airavata-cyan mr-2" />
+            <Calendar className="h-4 w-4 text-gray-500 mr-2" />
             <span className="text-sm">{flight.date}</span>
           </div>
           
           <div className="flex items-center">
-            <Users className="h-4 w-4 text-airavata-cyan mr-2" />
+            <Users className="h-4 w-4 text-gray-500 mr-2" />
             <span className="text-sm">{flight.availableSeats} seats available</span>
           </div>
         </div>
         
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">Taxi Number</div>
-            <div className="font-medium flex items-center">
-              <Plane className="h-4 w-4 mr-1 text-airavata-cyan" />
-              {flight.taxiNumber}
-            </div>
+            <div className="text-sm text-gray-500">Taxi Number</div>
+            <div className="font-medium">{flight.taxiNumber}</div>
           </div>
           
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-airavata-purple to-airavata-cyan hover:bg-airavata-purple/90 text-white">
+              <Button className="bg-airavata-purple hover:bg-airavata-purple/90 text-white">
                 Book Now
               </Button>
             </DialogTrigger>
@@ -125,7 +109,6 @@ const FlightCard = ({ flight, onBook }: FlightCardProps) => {
                 <DialogTitle>Book Your Air Taxi</DialogTitle>
                 <DialogDescription>
                   {flight.fromCity} to {flight.toCity} on {flight.date}
-                  {flight.isInternational && " (International Journey)"}
                 </DialogDescription>
               </DialogHeader>
               
@@ -190,7 +173,7 @@ const FlightCard = ({ flight, onBook }: FlightCardProps) => {
                     <span>₹{subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>{flight.isInternational ? `${flight.toCity} Tax` : 'IGST'} ({taxRate}%)</span>
+                    <span>IGST (18%)</span>
                     <span>₹{tax.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
                   </div>
                   <div className="flex justify-between pt-2 font-bold text-lg">
@@ -206,7 +189,7 @@ const FlightCard = ({ flight, onBook }: FlightCardProps) => {
                 </Button>
                 <Button 
                   type="button" 
-                  className="bg-gradient-to-r from-airavata-purple to-airavata-cyan text-white"
+                  className="bg-airavata-purple hover:bg-airavata-purple/90 text-white"
                   onClick={() => onBook(flight, adultCount, childCount)}
                 >
                   Proceed to Payment

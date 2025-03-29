@@ -59,8 +59,8 @@ const StatItem = ({ value, label, suffix = "", duration = 2000 }: StatItemProps)
   }, [value, duration, isVisible]);
 
   return (
-    <div className="text-center p-6 futuristic-border glow-effect bg-airavata-blue/40 backdrop-blur-sm">
-      <div className="text-4xl md:text-5xl font-bold mb-2 text-airavata-cyan font-orbitron">
+    <div className="text-center p-6">
+      <div className="text-4xl md:text-5xl font-bold mb-2 text-airavata-cyan">
         <span ref={countRef}>{count}</span>{suffix}
       </div>
       <p className="text-gray-300">{label}</p>
@@ -70,17 +70,10 @@ const StatItem = ({ value, label, suffix = "", duration = 2000 }: StatItemProps)
 
 const StatsSection = () => {
   return (
-    <section className="py-16 bg-airavata-blue text-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
-        <div className="absolute top-10 left-10 w-40 h-40 rounded-full border border-airavata-cyan animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full border border-airavata-purple animate-pulse" style={{animationDuration: "4s"}}></div>
-        <div className="absolute top-1/2 left-1/3 w-20 h-20 rounded-full border border-white animate-pulse" style={{animationDuration: "3s"}}></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-16 bg-airavata-blue text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 font-orbitron">
+          <h2 className="text-3xl font-bold mb-2">
             <span className="logo-highlight">AIR</span>avata by the Numbers
           </h2>
           <p className="text-xl text-gray-300">
