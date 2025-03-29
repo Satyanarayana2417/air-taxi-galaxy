@@ -1,4 +1,3 @@
-
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,8 +8,7 @@ import FleetSection from "@/components/FleetSection";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
-  // Using a video of air taxis/flying vehicles over a city at night
-  const heroVideoSrc = "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-city-at-night-13426-large.mp4";
+  const heroVideoSrc = "/public/videos/flying-taxi.mp4";  // Make sure this file exists in the public folder
   
   return (
     <div className="min-h-screen flex flex-col">
